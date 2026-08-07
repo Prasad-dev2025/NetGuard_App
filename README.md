@@ -20,3 +20,51 @@ While relational databases (SQL) excel at structured, tabular rows, they struggl
   MATCH path = (u:User)-[:HAS_ACCESS_TO]->(d:Device)-[:CONNECTS_TO*1..3]->(target:Device)-[:EXPOSES]->(v:Vulnerability)
 
                              
+erDiagram
+    USER ||--o{ DEVICE : "HAS_ACCESS_TO"
+    DEVICE ||--o{ DEVICE : "CONNECTED_TO (Hop Traversal)"
+    DEVICE ||--o{ VULNERABILITY : "HAS_VULNERABILITY"
+    DEVICE ||--o{ SUBNET : "BELONGS_TO"
+
+    USER {
+        string userName
+        string role
+        string privilegeLevel
+    }
+
+    DEVICE {
+        string ipAddress
+        string hostname
+        string os
+        boolean isCompromised
+    }
+
+    VULNERABILITY {
+        string cveId
+        string severity
+        float cvssScore
+    }
+
+    SUBNET {
+        string name
+        string cidrBlock
+        string zoneType
+    }
+
+
+
+    ### Graph Data Model Overview
+
+The **NetGuard** application models network connectivity and attack vectors using a graph structure:
+
+* **Nodes:**
+  * `User`: Represents users or service accounts accessing the network (`userName`, `role`, `privilegeLevel`).
+  * `Device`: Represents network endpoints, servers, or workstations (`ipAddress`, `hostname`, `os`, `isCompromised`).
+  * `Vulnerability`: Represents known exploits attached to devices (`cveId`, `severity`, `cvssScore`).
+  * `Subnet`: Represents segmented network environments (`name`, `cidrBlock`, `zoneType`).
+
+* **Relationships:**
+  * `(:User)-[:HAS_ACCESS_TO]->(:Device)`: Defines initial access permissions.
+  * `(:Device)-[:CONNECTED_TO]->(:Device)`: Represents lateral network routing paths (enables multi-hop attack path queries).
+  * `(:Device)-[:HAS_VULNERABILITY]->(:Vulnerability)`: Maps security risks directly to target machines.
+  * `(:Device)-[:BELONGS_TO]->(:Subnet)`: Groups infrastructure into logical network security zones.
