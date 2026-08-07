@@ -20,6 +20,9 @@ While relational databases (SQL) excel at structured, tabular rows, they struggl
   MATCH path = (u:User)-[:HAS_ACCESS_TO]->(d:Device)-[:CONNECTS_TO*1..3]->(target:Device)-[:EXPOSES]->(v:Vulnerability)
 
 
+
+
+
   ┌────────┐         ┌────────┐         ┌────────┐         ┌───────────────┐
  │  User  │ ──────> │ Device │ ──────> │ Device │ ──────> │ Vulnerability │
  └────────┘         └────────┘         └────────┘         └───────────────┘
