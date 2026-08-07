@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Rounded dark background -->
+  <rect width="32" height="32" rx="8" fill="#0f1219"/>
+  
+  <!-- Cyber Shield Outline -->
+  <path d="M16 4L26 8V15C26 21.08 21.82 26.69 16 28C10.18 26.69 6 21.08 6 15V8L16 4Z" 
+        stroke="#3182ce" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="rgba(49, 130, 206, 0.15)"/>
+  
+  <!-- Connected Network Nodes -->
+  <circle cx="16" cy="11" r="2.5" fill="#48bb78"/>
+  <circle cx="11" cy="19" r="2" fill="#63b3ed"/>
+  <circle cx="21" cy="19" r="2" fill="#f56565"/>
+  
+  <!-- Graph Edges / Lines -->
+  <line x1="16" y1="13.5" x2="11" y2="17" stroke="#cbd5e0" stroke-width="1.5"/>
+  <line x1="16" y1="13.5" x2="21" y2="17" stroke="#cbd5e0" stroke-width="1.5"/>
+</svg>
