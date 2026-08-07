@@ -33,6 +33,3 @@ build/
 .vscode/
 
 .env
-target/
-.mvn/
-*.log
